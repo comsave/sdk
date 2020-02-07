@@ -2,11 +2,23 @@
 
 namespace Comsave\SDK;
 
+use Comsave\Interfaces\GuzzleClientBuilderInterface;
 use GuzzleHttp\Client;
 
 class WebserviceClientBuilder
 {
     public const PRODUCTION_WEBSERVICE_URL = 'https://webservice.comsave.com/api';
+
+    /** @var GuzzleClientBuilderInterface */
+    private $guzzleClientBuilder;
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function __construct(GuzzleClientBuilderInterface $guzzleClientBuilder)
+    {
+        $this->guzzleClientBuilder = $guzzleClientBuilder;
+    }
 
     public function build(string $username, string $password, ?string $host = null): WebserviceClient
     {
@@ -15,15 +27,10 @@ class WebserviceClientBuilder
         }
 
         return new WebserviceClient(
-            $this->buildGuzzleClient(),
+            $this->guzzleClientBuilder->build(),
             $username,
             $password,
             $host
         );
-    }
-
-    protected function buildGuzzleClient(array $options = []): Client
-    {
-        return new Client($options);
     }
 }
