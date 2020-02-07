@@ -5,6 +5,7 @@ namespace Comsave\SDK;
 use Comsave\SDK\Exception\RequestFailedException;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
@@ -44,7 +45,7 @@ class WebserviceClient
 
     /**
      * @throws RequestFailedException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function request(string $method, string $uri, ?array $body = []): ResponseInterface
     {
@@ -82,7 +83,7 @@ class WebserviceClient
 
     /**
      * @throws RequestFailedException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function authenticate(): void
     {

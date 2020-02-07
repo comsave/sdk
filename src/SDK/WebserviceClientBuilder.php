@@ -3,7 +3,6 @@
 namespace Comsave\SDK;
 
 use Comsave\SDK\Interfaces\GuzzleClientBuilderInterface;
-use GuzzleHttp\Client;
 
 class WebserviceClientBuilder
 {
@@ -22,7 +21,7 @@ class WebserviceClientBuilder
 
     public function build(string $username, string $password, ?string $host = null): WebserviceClient
     {
-        if(!$host) {
+        if (!$host) {
             $host = static::PRODUCTION_WEBSERVICE_URL;
         }
 
