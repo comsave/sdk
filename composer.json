@@ -1,0 +1,12 @@
+{
+    "name": "comsave/sdk",
+    "type": "library",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Vaidas Bagdonas",
+            "email": "vaidas.bagdonas@comsave.com"
+        }
+    ],
+    "require": {}
+}
