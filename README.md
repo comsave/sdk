@@ -1,5 +1,8 @@
 # Comsave API SDK
 
+![](https://img.shields.io/github/v/release/comsave/sdk)
+![](https://img.shields.io/travis/comsave/sdk)
+
 The API itself and request/response examples can be found at https://developer.comsave.com/.
 
 This SDK is **not yet production ready** so keep that in mind before integrating it.
