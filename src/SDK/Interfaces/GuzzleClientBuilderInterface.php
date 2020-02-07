@@ -1,6 +1,6 @@
 <?php
 
-namespace Comsave\Interfaces;
+namespace Comsave\SDK\Interfaces;
 
 use GuzzleHttp\ClientInterface;
 

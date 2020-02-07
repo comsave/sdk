@@ -2,7 +2,7 @@
 
 namespace Comsave\Tests\SDK;
 
-use Comsave\Interfaces\GuzzleClientBuilderInterface;
+use Comsave\SDK\Interfaces\GuzzleClientBuilderInterface;
 use Comsave\SDK\WebserviceClientBuilder;
 use Comsave\Tests\Traits\FakerTrait;
 use PHPUnit\Framework\MockObject\MockObject;

@@ -2,7 +2,7 @@
 
 namespace Comsave\SDK;
 
-use Comsave\Interfaces\GuzzleClientBuilderInterface;
+use Comsave\SDK\Interfaces\GuzzleClientBuilderInterface;
 use GuzzleHttp\Client;
 
 class WebserviceClientBuilder
