@@ -22,9 +22,6 @@ class WebserviceClient
     /** @var string */
     private $password;
 
-    /** @var bool */
-    private $isEnabled;
-
     /** @var LoggerInterface */
     private $logger;
 
@@ -127,11 +124,6 @@ class WebserviceClient
     public function getPassword(): string
     {
         return $this->password;
-    }
-
-    public function setEnabled(bool $isEnabled): void
-    {
-        $this->isEnabled = $isEnabled;
     }
 
     /** @required */
