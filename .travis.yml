@@ -10,7 +10,7 @@ script:
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=57bfc040724d435bc51f68da0034b2744e35374edce93d1671864072d7ba008f
+    - CC_TEST_REPORTER_ID=9b04e6d1240f2bbeca64987ce2453431b818f548cfa0d8465955469091ab4a2b
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
