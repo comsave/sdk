@@ -2,11 +2,11 @@
 
 namespace Comsave\SDK;
 
-use Comsave\SDK\Interfaces\GuzzleClientBuilderInterface;
+use Comsave\SDK\Interfaces\HttpClientBuilderInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
-class GuzzleClientBuilder implements GuzzleClientBuilderInterface
+class HttpClientBuilder implements HttpClientBuilderInterface
 {
     public function build(array $options = []): ClientInterface
     {

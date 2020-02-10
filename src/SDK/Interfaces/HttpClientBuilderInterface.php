@@ -4,7 +4,7 @@ namespace Comsave\SDK\Interfaces;
 
 use GuzzleHttp\ClientInterface;
 
-interface GuzzleClientBuilderInterface
+interface HttpClientBuilderInterface
 {
     public function build(array $options = []): ClientInterface;
 }

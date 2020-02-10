@@ -2,7 +2,7 @@
 
 namespace Comsave\Tests\SDK;
 
-use Comsave\SDK\Interfaces\GuzzleClientBuilderInterface;
+use Comsave\SDK\Interfaces\HttpClientBuilderInterface;
 use Comsave\SDK\WebserviceClientBuilder;
 use Comsave\Tests\Traits\FakerTrait;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -12,7 +12,7 @@ class WebserviceClientBuilderTest extends TestCase
 {
     use FakerTrait;
 
-    /** @var GuzzleClientBuilderInterface|MockObject */
+    /** @var HttpClientBuilderInterface|MockObject */
     private $guzzleClientBuilderMock;
 
     /** @var WebserviceClientBuilder */
@@ -20,7 +20,7 @@ class WebserviceClientBuilderTest extends TestCase
 
     public function setUp(): void
     {
-        $this->guzzleClientBuilderMock = $this->createMock(GuzzleClientBuilderInterface::class);
+        $this->guzzleClientBuilderMock = $this->createMock(HttpClientBuilderInterface::class);
 
         $this->webserviceClientBuilder = new WebserviceClientBuilder(
             $this->guzzleClientBuilderMock

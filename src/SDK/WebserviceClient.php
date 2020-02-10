@@ -54,10 +54,12 @@ class WebserviceClient
         }
 
         try {
-            $response = $this->client->request($method, vsprintf('%s%s', [
+            $requestUrl = vsprintf('%s%s', [
                 $this->getBaseUrl(),
                 $uri,
-            ]), array_filter([
+            ]);
+
+            $response = $this->client->request($method, $requestUrl, array_filter([
                 'body' => $body,
                 'headers' => [
                     'X-Auth-Token' => $this->token,
@@ -65,20 +67,12 @@ class WebserviceClient
                 ],
             ]));
         } catch (ClientException $ex) {
-            if (200 !== $ex->getResponse()->getStatusCode()) {
-                throw new RequestFailedException(
-                    $ex->getResponse()->getStatusCode(),
-                    $ex->getResponse()->getBody()->getContents()
-                );
-            }
+            $response = $ex->getResponse();
         }
 
-        return $response;
-    }
+        $this->handleUnsuccessful($response);
 
-    public function isSuccess(ResponseInterface $response): bool
-    {
-        return (bool)json_decode((string)$response->getBody())->success;
+        return $response;
     }
 
     /**
@@ -100,16 +94,33 @@ class WebserviceClient
                 ]),
             ]));
         } catch (ClientException $ex) {
-            if (200 !== $ex->getResponse()->getStatusCode()) {
-                throw new RequestFailedException(
-                    $ex->getResponse()->getStatusCode(),
-                    $ex->getResponse()->getBody()->getContents()
-                );
-            }
+            $response = $ex->getResponse();
         }
 
-        $this->token = json_decode($response->getBody()->getContents())->token;
+        $this->handleUnsuccessful($response);
+
+        $this->token = json_decode((string)$response->getBody())->token;
         $this->tokenCreatedAt = time();
+    }
+
+    /**
+     * @throws RequestFailedException
+     */
+    public function handleUnsuccessful(ResponseInterface $response): void
+    {
+        if (!$this->isSuccess($response)) {
+            throw new RequestFailedException(
+                $response->getStatusCode(),
+                $response->getBody()
+            );
+        }
+    }
+
+    public function isSuccess(ResponseInterface $response): bool
+    {
+        $decodedBody = json_decode($response->getBody(), true);
+
+        return (isset($decodedBody['success']) && $decodedBody['success'] === true) || 200 === $response->getStatusCode();
     }
 
     public function getBaseUrl(): string
