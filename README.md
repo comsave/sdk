@@ -1,7 +1,8 @@
 # Comsave API SDK
 
-![](https://img.shields.io/github/v/release/comsave/sdk)
-![](https://img.shields.io/travis/comsave/sdk)
+[![Release](https://img.shields.io/github/v/release/comsave/sdk)](https://github.com/comsave/sdk/releases)
+[![Travis](https://img.shields.io/travis/comsave/sdk)](https://travis-ci.org/comsave/sdk)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/comsave/sdk)](https://codeclimate.com/github/comsave/sdk)
 
 The API itself and request/response examples can be found at https://developer.comsave.com/.
 
