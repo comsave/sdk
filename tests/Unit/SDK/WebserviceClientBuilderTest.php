@@ -12,27 +12,12 @@ class WebserviceClientBuilderTest extends TestCase
 {
     use FakerTrait;
 
-    /** @var HttpClientBuilderInterface|MockObject */
-    private $guzzleClientBuilderMock;
-
-    /** @var WebserviceClientBuilder */
-    private $webserviceClientBuilder;
-
-    public function setUp(): void
-    {
-        $this->guzzleClientBuilderMock = $this->createMock(HttpClientBuilderInterface::class);
-
-        $this->webserviceClientBuilder = new WebserviceClientBuilder(
-            $this->guzzleClientBuilderMock
-        );
-    }
-
     public function testBuildSetsCorrectlyUsername(): void
     {
         $username = $this->getFaker()->userName;
         $password = $this->getFaker()->password;
 
-        $wsClient = $this->webserviceClientBuilder->build(
+        $wsClient = WebserviceClientBuilder::build(
             $username,
             $password
         );
@@ -45,7 +30,7 @@ class WebserviceClientBuilderTest extends TestCase
         $username = $this->getFaker()->userName;
         $password = $this->getFaker()->password;
 
-        $wsClient = $this->webserviceClientBuilder->build(
+        $wsClient = WebserviceClientBuilder::build(
             $username,
             $password
         );
@@ -59,7 +44,7 @@ class WebserviceClientBuilderTest extends TestCase
         $username = $this->getFaker()->userName;
         $password = $this->getFaker()->password;
 
-        $wsClient = $this->webserviceClientBuilder->build(
+        $wsClient = WebserviceClientBuilder::build(
             $username,
             $password
         );
@@ -73,7 +58,7 @@ class WebserviceClientBuilderTest extends TestCase
         $password = $this->getFaker()->password;
         $devHost = 'http://host.docker.internal:3006/api';
 
-        $wsClient = $this->webserviceClientBuilder->build(
+        $wsClient = WebserviceClientBuilder::build(
             $username,
             $password,
             $devHost

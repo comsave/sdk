@@ -8,7 +8,7 @@ use GuzzleHttp\ClientInterface;
 
 class HttpClientBuilder implements HttpClientBuilderInterface
 {
-    public function build(array $options = []): ClientInterface
+    public static function build(array $options = []): ClientInterface
     {
         return new Client($options);
     }

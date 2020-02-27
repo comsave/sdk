@@ -6,5 +6,5 @@ use GuzzleHttp\ClientInterface;
 
 interface HttpClientBuilderInterface
 {
-    public function build(array $options = []): ClientInterface;
+    public static function build(array $options = []): ClientInterface;
 }

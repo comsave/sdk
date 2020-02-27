@@ -3,11 +3,8 @@
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use \Comsave\SDK\WebserviceClientBuilder;
-use \Comsave\SDK\HttpClientBuilder;
 
-$wsClientBuilder = new WebserviceClientBuilder(new HttpClientBuilder());
-
-$wsClient = $wsClientBuilder->build(
+$wsClient = WebserviceClientBuilder::build(
     'your_username',
     'your_password'
 );
