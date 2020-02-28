@@ -14,7 +14,6 @@ $availableCountries = $wsClient->request(
     'countries.json'
 );
 
-$parsedResponse = json_decode($availableCountries->getBody(), true);
+$parsedResponse = json_decode((string)$availableCountries->getBody(), true);
 
-var_dump($parsedResponse['countries']);
-var_dump($parsedResponse['success']);
+echo json_encode($parsedResponse, JSON_PRETTY_PRINT);
